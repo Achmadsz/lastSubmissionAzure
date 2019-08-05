@@ -147,6 +147,8 @@
                     $blobClient = BlobRestProxy::createBlobService($conString);
                     $containerName = "fileupload";
 
+                    echo $containerName;
+
                     if (isset($_POST['Upload'])) {
                         upload($blobClient,$containerName);
                     }elseif(isset($_POST['Clear'])) {
@@ -282,7 +284,8 @@
                                 echo "<script type='text/javascript'>alert(\"Type File Should Be JPG, PNG, JPEG and GIF\")</script>";
                             }
                         }else{
-                            echo "<script type='text/javascript'>alert(\"Please, Choose Your File!\")</script>";
+                            //echo "<script type='text/javascript'>alert(\"Please, Choose Your File!\")</script>";
+                            echo "Please, Choose Your File";
                         }
 
                     }  
