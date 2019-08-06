@@ -41,13 +41,25 @@
                     use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
                     use MicrosoftAzure\Storage\Blob\Models\CreateBlockBlobOptions;
                     use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;        
-                    
-                    
-                    $conString = "DefaultEndpointsProtocol=https;AccountName=".getenv('ACCOUNT_NAME').";AccountKey=".getenv('ACCOUNT_KEY');
+					
+					try{
+						$conString = "DefaultEndpointsProtocol=https;AccountName=".getenv('ACCOUNT_NAME').";AccountKey=".getenv('ACCOUNT_KEY');
                     $blobClient = BlobRestProxy::createBlobService($conString);
                     $containerName = "fileupload";
 
                     echo $containerName;
+					}
+					catch(ServiceException $e){
+						// Handle exception based on error codes and messages.
+						// Error codes and messages are here:
+						// http://msdn.microsoft.com/library/azure/dd179439.aspx
+						$code = $e->getCode();
+						$error_message = $e->getMessage();
+						echo $code.": ".$error_message."<br />";
+					}
+				}
+                    
+                    
 
                     if (isset($_POST['Upload'])) {
                         upload($blobClient,$containerName);
