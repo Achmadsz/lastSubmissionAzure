@@ -146,7 +146,8 @@
                     
 
                     try{
-                        $conString = "DefaultEndpointsProtocol=https;AccountName=".getenv('ACCOUNT_NAME').";AccountKey=".getenv('ACCOUNT_KEY');
+                    //$conString = "DefaultEndpointsProtocol=https;AccountName=".getenv('ACCOUNT_NAME').";AccountKey=".getenv('ACCOUNT_KEY');
+                    $conString = "DefaultEndpointsProtocol=https;AccountName=azurestoragesubmission;AccountKey=H0k1TWoNmvBLFipekVMoGj+5uA3exe+0HtATahMmG/if+g3arDg6i1u2u5PG6cXhSbeTHfW8Y5MomEDrd/yUGA==;EndpointSuffix=core.windows.net";
                     $blobClient = BlobRestProxy::createBlobService($conString);
                     $containerName = "fileupload";
 
