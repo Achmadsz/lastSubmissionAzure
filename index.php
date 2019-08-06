@@ -3,41 +3,7 @@
     <head>
         <title>Storage And Cognitive</title>
         <script src="jquery.min.js"></script>
-        <style>
-            table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            }
-
-            td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-            }
-
-            button:hover{
-                background-color:blue;
-            }
-
-            .button {
-                background-color: #4CAF50;
-                border: none;
-                color: white;
-                padding: 10px 22px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                border-radius: 10px;
-                
-            }
-
-            .button:hover{
-                background-color: #3e8e41;
-                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-            }
-            
-        </style>
+        <link rel="stylesheet" type="text/css" href="show.css">
     </head>
     <body>
     <script type="text/javascript">
@@ -89,9 +55,7 @@
     
             .done(function(data) {
                 // Show formatted JSON on webpage.
-               //$("#responseTextArea").val(JSON.stringify(data, null, 2));
-
-               $("#responseTextArea").val(JSON.stringify(data["description"]["captions"][0].text,null,2));
+                document.getElementById("TextLabel").innerHTML = JSON.stringify(data["description"]["captions"][0].text,null,2);
             })
     
             .fail(function(jqXHR, textStatus, errorThrown) {
@@ -120,17 +84,11 @@
                 <div>
             </form>
             <br>
-            <div id="wrapper" style="float:left;margin-right:20px" >
-                <div>
-                    Source image:
-                    <br>
-                    <img id="sourceImage" width="350" height="250" style="border: solid 2px"/>
-                </div>
-                <div>
-                    <textarea id="responseTextArea" class="UIInput"
-                  style="width:350px; height:100px;"></textarea>
-                </div>
-            </div>
+                <div>Source Image :</div>
+                <div class="gallery">
+                        <img id="sourceImage" width="600" height="800"/>
+                        <div class="desc"><p id="TextLabel"></p></div>
+                    </div>
                 <?php 
                     require_once 'vendor/autoload.php';
 
@@ -141,9 +99,6 @@
                     use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
                     use MicrosoftAzure\Storage\Blob\Models\CreateBlockBlobOptions;
                     use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;        
-                    
-                    
-                    
 
                     try{
                     //$conString = "DefaultEndpointsProtocol=https;AccountName=".getenv('ACCOUNT_NAME').";AccountKey=".getenv('ACCOUNT_KEY');
@@ -301,6 +256,8 @@
 
                     }  
                 ?>
+                   
+            </div>
         </div>
     </body>
 </html>
