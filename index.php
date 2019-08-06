@@ -150,8 +150,6 @@
                     $conString = "DefaultEndpointsProtocol=https;AccountName=azurestoragesubmission;AccountKey=H0k1TWoNmvBLFipekVMoGj+5uA3exe+0HtATahMmG/if+g3arDg6i1u2u5PG6cXhSbeTHfW8Y5MomEDrd/yUGA==;EndpointSuffix=core.windows.net";
                     $blobClient = BlobRestProxy::createBlobService($conString);
                     $containerName = "fileupload";
-
-                    echo $containerName;
                     }
                     catch(ServiceException $e){
                         // Handle exception based on error codes and messages.
@@ -298,8 +296,7 @@
                                 echo "<script type='text/javascript'>alert(\"Type File Should Be JPG, PNG, JPEG and GIF\")</script>";
                             }
                         }else{
-                            //echo "<script type='text/javascript'>alert(\"Please, Choose Your File!\")</script>";
-                            echo "Please, Choose Your File";
+                            echo "<script type='text/javascript'>alert(\"Please, Choose Your File!\")</script>";
                         }
 
                     }  
